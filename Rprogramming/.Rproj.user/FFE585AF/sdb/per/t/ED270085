@@ -1,0 +1,18 @@
+{
+    "contents" : "##\n## Function Name: pollutantmean.R\n## Parameters: 3\n## Param Desc: \n##           : directory - character vector that holds the name of the directory where the data resides.\n##           : pollutant - character vector of the pollutant being calculated (sulfate or nitrate)\n##           : id - integer vector representing the Monitor id that took the data (332 mon in total)\n##           : Returns NULL on ERROR.\n##\npollutantmean <- function(directory, pollutant, id = 1:332) {\n  ## Get Id Ranges vector\n  myId<-c(as.numeric(id))\n  myMonitorsDataSet<-NULL\n  ## 'directory' is a character vector of length 1 indicating\n  ## the location of the CSV files\n  \n  ## Construct path\n  myPath <- gsub(\" \",\"\",paste(getwd(),'/',directory, collapse = \"\"))\n\n  ## Loop through te Id vector and create file names to load them\n  for (i in 1:length(myId)) { # Begin for\n    ## Verify directory existence \n    if (dir.exists(directory)) { # Begin if\n      ## Construct File name and add it to path\n        myFileName <-gsub(\" \",\"\",paste(myPath,'/', sprintf(\"%03d\", as.numeric(myId[i])),\".csv\",collapse=\"\"))\n\n    } else { ## Error and Exit\n        print(myFileName)\n        return (NULL)\n    } # End if\n  \n  ## Verify File Existence & Read Data from file\n   \n    if (file.exists(myFileName)) { # Begin if\n        ## Read file\n        myDataSet<-read.csv(myFileName,header=TRUE, na.strings = \"NA\")\n        \n        ## Aggregate read data set to complete monitors data set\n        myMonitorsDataSet<-rbind(myMonitorsDataSet,myDataSet)\n  \n    } else { ## Error and Exit\n        return (NULL)\n    } # End if\n  } # End for loop  \n   \n  \n   ## Construct logical table to eliminate bad data\n   good<-complete.cases(myMonitorsDataSet)\n   ## Remove all NA\n   myCleanDataSet<-myMonitorsDataSet[good,] \n \n   ## 'pollutant' is a character vector of length 1 indicating\n   ## the name of the pollutant for which we will calculate the\n   ## mean; either \"sulfate\" or \"nitrate\".\n   ## 'id' is an integer vector indicating the monitor ID numbers\n   ## to be used\n   \n   if (pollutant=='sulfate') {\n     myMean<-sprintf(\"%.3f\",mean(myCleanDataSet$sulfate))\n   } else if (pollutant == 'nitrate') {\n     myMean<-sprintf(\"%.3f\", mean(myCleanDataSet$nitrate))\n   } else { # Error\n     return (NULL)\n   }\n   \n   \n  ## Return the mean of the pollutant across all monitors list\n  ## in the 'id' vector (ignoring NA values)\n  ## NOTE: Do not round the result!\n\n   return (myMean) \n}\n\n\n",
+    "created" : 1441763225113.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "39924404",
+    "id" : "ED270085",
+    "lastKnownWriteTime" : 1441911806,
+    "path" : "~/GitHub/datasciencecoursera/RProgramming/pollutantmean.R",
+    "project_path" : "pollutantmean.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

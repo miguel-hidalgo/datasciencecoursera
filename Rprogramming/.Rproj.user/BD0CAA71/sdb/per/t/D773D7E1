@@ -1,0 +1,17 @@
+{
+    "contents" : "## Put comments here that give an overall description of what your\n## functions do\n\n## Write a short comment describing this function\n##\n## Function Name: makeCacheMatrix\n## Purpose......: Creates a persistent Cache Matrix object that stores two Matrices\n## .............: the last original matrix and its inverse.\n##..............: Also provides property like methods (functions) to retreat \n## .............: the stored Matrix to compare and if equal returns its stored inverse \n## .............: \n\nmakeCacheMatrix <- function(x = matrix()) {\n\n}\n\n\n## Write a short comment describing this function\n\ncacheSolve <- function(x, ...) {\n        ## Return a matrix that is the inverse of 'x'\n}\n",
+    "created" : 1442148529902.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2643182806",
+    "id" : "D773D7E1",
+    "lastKnownWriteTime" : 1442111955,
+    "path" : "C:/Users/miguehida/datasciencecoursera/Rprogramming/ProgrammingAssignment2/cachematrix.R",
+    "project_path" : "ProgrammingAssignment2/cachematrix.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

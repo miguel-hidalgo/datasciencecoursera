@@ -1,2 +1,0 @@
-# datasciencecoursera
-DataScientistToolbox Assigments Repository
